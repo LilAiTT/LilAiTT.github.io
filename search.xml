@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[tt]]></title>
-    <url>%2F2019%2F03%2F01%2Ftt%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[bb]]></title>
-    <url>%2F2019%2F03%2F01%2Fbb%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F03%2F01%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[生成括号]]></title>
+    <url>%2F2019%2F03%2F01%2F%E7%94%9F%E6%88%90%E6%8B%AC%E5%8F%B7%2F</url>
+    <content type="text"><![CDATA[生成括号 合法的括号组合必然是”(“数量与”)”数量相等，因此当一个”(“生成时必然有一个”)”生成。 想象手上有一把”(“但是却没有”)”，在地上放置一个”(“，则手中”叮”一声多出一个”)”，你的任务就是把手里的”(“”)”像牌一样打完放在地上。 设n为”(“数量，m为”)”数量。 当n == 0 &amp;&amp; m == 0 时为递归基。 设置初值n = N,m = 0。 放置一个”(“,n-=1,m+=1。 放置一个”)”,m-=1。 123456789101112131415class Solution &#123;public: vector&lt;string&gt; generateParenthesis(int n) &#123; vector&lt;string&gt; ans; addingp(ans,&quot;&quot;,n,0); return ans; &#125; void addingp(vector&lt;string&gt; &amp;v, string str, int n, int m)&#123; if( n == 0 &amp;&amp; m == 0 )&#123; v.push_back(str); &#125; if( m &gt; 0 ) addingp(v,str+&quot;)&quot;,n,m-1); if( n &gt; 0 ) addingp(v,str+&quot;(&quot;,n-1,m+1); &#125;&#125;;]]></content>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>回溯</tag>
+      </tags>
   </entry>
 </search>
