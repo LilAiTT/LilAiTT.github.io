@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Comparator]]></title>
+    <url>%2F2019%2F03%2F18%2FComparator%2F</url>
+    <content type="text"><![CDATA[比较Student的顺序 priority:CGPA &gt; name &gt; ID ###方法一 实现Comparator借口，重载compare函数，剩下的你懂的 1234567891011121314class StudentComparator implements Comparator&lt;Student&gt; &#123; @Override public int compare(Student o1, Student o2) &#123; if (o1.getCGPA() == o2.getCGPA()) &#123; if(o1.getName().equals(o2.getName())) &#123; return Integer.compare(o2.getID(), o1.getID()); &#125; else &#123; return o1.getName().compareTo(o2.getName()); &#125; &#125; return Double.compare(o2.getCGPA(), o1.getCGPA()); &#125;&#125;PriorityQueue&lt;Student&gt; queue = new PriorityQueue&lt;&gt;(studentComparator); ###方法二,肥肠推荐该方法，很简便Comparator&lt;&gt;的简便实现方法 12345Comparator&lt;Student&gt; studentComparator = Comparator.comparing(Student::getCGPA).reversed() .thenComparing(Student::getName) .thenComparing(Student::getID); PriorityQueue&lt;Student&gt; queue = new PriorityQueue&lt;&gt;(studentComparator);]]></content>
+      <tags>
+        <tag>hackerrank</tag>
+        <tag>Data Structrue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[HashSet&HashMap]]></title>
     <url>%2F2019%2F03%2F18%2FHashSet-HashMap%2F</url>
     <content type="text"><![CDATA[Java Dequeue In this problem, you are given integers. You need to find the maximum number of unique integers among all the possible contiguous subarrays of size . ###HashSet O(mn) HashSet维护Dequeue大小以内独特元素的个数，Dequeue每次吃一个元素就往HashSet里面补充该元素（根据集合的性质，重复元素不重复计数），当Dequeue元素数等于m时，Dequeue该吐出元素了（再吃一个元素就大于m惹），若吐出的元素不存在于Dequeue，则该元素也不应当存在于HashSet中，故此时要从HashSet中取出该元素 Dequeue不断吃元素，当Dequeue元素等于m时应吐出一个元素。 HashSet维护Dequeue内元素独特元素个数。 1234567891011121314151617181920212223242526import java.util.*;public class test &#123; public static void main(String[] args) &#123; Scanner in = new Scanner(System.in); Deque&lt;Integer&gt; d = new ArrayDeque&lt;&gt;(); HashSet&lt;Integer&gt; s = new HashSet&lt;&gt;(); int n = in.nextInt(); int m = in.nextInt(); int max = 0; for (int i = 0; i &lt; n; i++) &#123; int num = in.nextInt(); d.add(num); s.add(num); if( d.size() == m )&#123; max = s.size() &gt; max ? s.size() : max; int tmp = d.remove(); if( !d.contains(tmp) ) s.remove(tmp); &#125; &#125; System.out.println(max); in.close(); &#125;&#125; ###HashMap O(n) HashMap不同于HashSet的是HashMap有&lt;K,V&gt;键-值对 Dequeue不断吃元素，当Dequeue元素大于m时，该吐出一个元素。 HashMap维护的是Dequeue中每一个元素的个数。 上述两个方法本人认为使用HashSet更为巧妙 123456789101112131415161718192021222324252627282930import java.util.*;public class test &#123; public static void main(String[] args) &#123; Scanner in = new Scanner(System.in); Deque&lt;Integer&gt; deque = new ArrayDeque&lt;Integer&gt;(); HashMap&lt;Integer,Integer&gt; hashmap = new HashMap&lt;Integer,Integer&gt;(); int n = in.nextInt(); int m = in.nextInt(); int ans = 0,distinct = 0; for (int i = 0; i &lt; n; i++) &#123; int num = in.nextInt(); deque.addLast(num); if( hashmap.get(num) == null ) hashmap.put(num,0); hashmap.put(num,hashmap.get(num) + 1); if( hashmap.get(num) == 1 ) distinct++; if( deque.size() == m + 1 )&#123; int _out = deque.removeFirst(); hashmap.put(_out,hashmap.get(_out) - 1); if( hashmap.get(_out) == 0 ) distinct--; &#125; if ( deque.size() == m ) ans = distinct &gt; ans ? distinct: ans; &#125; System.out.println( ans ); in.close(); &#125;&#125;]]></content>
       <tags>
-        <tag>java</tag>
         <tag>hackerrank</tag>
+        <tag>java</tag>
         <tag>data structrue</tag>
       </tags>
   </entry>
