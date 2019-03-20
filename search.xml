@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Today]]></title>
+    <url>%2F2019%2F03%2F21%2F%E4%BB%80%E4%B9%88%E9%83%BD%E8%AE%B0%E4%B8%80%E7%82%B91%2F</url>
+    <content type="text"><![CDATA[我开始细嚼慢咽，珍藏你写的每一封信]]></content>
+      <tags>
+        <tag>today</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Comparator]]></title>
     <url>%2F2019%2F03%2F18%2FComparator%2F</url>
     <content type="text"><![CDATA[比较Student的顺序 priority:CGPA &gt; name &gt; ID ###方法一 实现Comparator借口，重载compare函数，剩下的你懂的 1234567891011121314class StudentComparator implements Comparator&lt;Student&gt; &#123; @Override public int compare(Student o1, Student o2) &#123; if (o1.getCGPA() == o2.getCGPA()) &#123; if(o1.getName().equals(o2.getName())) &#123; return Integer.compare(o2.getID(), o1.getID()); &#125; else &#123; return o1.getName().compareTo(o2.getName()); &#125; &#125; return Double.compare(o2.getCGPA(), o1.getCGPA()); &#125;&#125;PriorityQueue&lt;Student&gt; queue = new PriorityQueue&lt;&gt;(studentComparator); ###方法二,肥肠推荐该方法，很简便Comparator&lt;&gt;的简便实现方法 12345Comparator&lt;Student&gt; studentComparator = Comparator.comparing(Student::getCGPA).reversed() .thenComparing(Student::getName) .thenComparing(Student::getID); PriorityQueue&lt;Student&gt; queue = new PriorityQueue&lt;&gt;(studentComparator);]]></content>
